@@ -8,23 +8,23 @@ import pyrender
 import warnings
 import glob
 
-import stretch_body.robot
-import stretch_body.device
-import stretch_body.hello_utils as hu
+# import stretch_body.robot
+# import stretch_body.device
+# import stretch_body.hello_utils as hu
 import time
 import multiprocessing
 
-try:
-    # works on ubunut 22.04
-    import importlib.resources as importlib_resources
-    str(importlib_resources.files("stretch_body"))
-except AttributeError as e:
-    # works on ubuntu 20.04
-    import importlib_resources
-    str(importlib_resources.files("stretch_body"))
+# try:
+#     # works on ubunut 22.04
+#     import importlib.resources as importlib_resources
+#     str(importlib_resources.files("stretch_body"))
+# except AttributeError as e:
+#     # works on ubuntu 20.04
+#     import importlib_resources
+#     str(importlib_resources.files("stretch_body"))
 
-hu.print_stretch_re_use()
-warnings.filterwarnings("ignore")
+# hu.print_stretch_re_use()
+# warnings.filterwarnings("ignore")
 
 class URDFVisualizer:
     """The `show` method in this class is modified from the
@@ -143,7 +143,7 @@ if __name__ == "__main__":
     parser.add_argument('-g', "--gamepad", help="Use gamepad to control pose", action="store_true")
     args = parser.parse_args()
 
-    pkg = str(importlib_resources.files("stretch_urdf"))  # .local/lib/python3.10/site-packages/stretch_urdf)
+    pkg = str('stretch_urdf')  # .local/lib/python3.10/site-packages/stretch_urdf)
     models=['RE1V0','RE2V0','SE3']
     urdf_files=[]
     for m in models:
@@ -176,7 +176,7 @@ if __name__ == "__main__":
     use_dw = (tool_name=='tool_dex_wrist' or tool_name=='eoa_wrist_dw3_tool_sg3' or tool_name=='eoa_wrist_dw3_tool_nil' or tool_name=='eoa_wrist_dw3_tool_tablet_12in')
 
     urdf = urdf_loader.URDF.load(urdf_name)
-    tool = stretch_body.device.Device(req_params=False).robot_params['robot']['tool']
+    # tool = stretch_body.device.Device(req_params=False).robot_params['robot']['tool']
     viz = URDFVisualizer(urdf)
 
 
@@ -217,7 +217,7 @@ if __name__ == "__main__":
 
         def _worker(viz_shared_cfg, viz_shared_collision):
             urdf = urdf_loader.URDF.load(urdf_name)
-            tool = stretch_body.device.Device(req_params=False).robot_params['robot']['tool']
+            # tool = stretch_body.device.Device(req_params=False).robot_params['robot']['tool']
             viz = URDFVisualizer(urdf)
             collision = False
             if viz_shared_collision.get():
